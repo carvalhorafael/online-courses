@@ -16,8 +16,11 @@ class Online_Courses_Plugin {
 
 	private Online_Courses_Content_Domain $content_domain;
 
+	private Online_Courses_GitHub_Updater $github_updater;
+
 	private function __construct() {
 		$this->content_domain = new Online_Courses_Content_Domain();
+		$this->github_updater = new Online_Courses_GitHub_Updater( ONLINE_COURSES_FILE, ONLINE_COURSES_VERSION );
 	}
 
 	public static function instance(): Online_Courses_Plugin {
@@ -37,6 +40,7 @@ class Online_Courses_Plugin {
 
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		$this->content_domain->register_hooks();
+		$this->github_updater->register_hooks();
 	}
 
 	public function load_textdomain(): void {
@@ -49,6 +53,10 @@ class Online_Courses_Plugin {
 
 	public function content_domain(): Online_Courses_Content_Domain {
 		return $this->content_domain;
+	}
+
+	public function github_updater(): Online_Courses_GitHub_Updater {
+		return $this->github_updater;
 	}
 
 	public static function activate(): void {

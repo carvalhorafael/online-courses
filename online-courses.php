@@ -26,6 +26,7 @@ define( 'ONLINE_COURSES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ONLINE_COURSES_BASENAME', plugin_basename( __FILE__ ) );
 
 require_once ONLINE_COURSES_DIR . 'includes/class-content-domain.php';
+require_once ONLINE_COURSES_DIR . 'includes/class-github-updater.php';
 require_once ONLINE_COURSES_DIR . 'includes/class-plugin.php';
 
 /**
