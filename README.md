@@ -10,6 +10,7 @@ Online Courses is a WordPress plugin that owns a reusable "online courses" conte
   - `_online_courses_checkout_url`
 - A WordPress admin meta box for the course checkout URL
 - Rewrite rules for `/cursos/`, `/cursos/{slug}/` and `/cursos/categoria/...`
+- GitHub Releases update integration through the plugin `Update URI`
 
 ## What It Does Not Provide
 
