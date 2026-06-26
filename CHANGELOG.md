@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 - release
+
+- Preparacao de release.
+
 ## 0.1.1 - release
 
 - Preparacao de release.
