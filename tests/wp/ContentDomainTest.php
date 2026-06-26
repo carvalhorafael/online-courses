@@ -19,6 +19,39 @@ final class ContentDomainTest extends WP_UnitTestCase {
 		$this->assertTrue( post_type_supports( online_courses_post_type(), 'editor' ) );
 		$this->assertTrue( post_type_supports( online_courses_post_type(), 'thumbnail' ) );
 		$this->assertTrue( post_type_supports( online_courses_post_type(), 'excerpt' ) );
+		$this->assertFalse( $post_type->template_lock );
+		$this->assertIsArray( $post_type->template );
+		$this->assertNotEmpty( $post_type->template );
+		$this->assertSame( 'core/heading', $post_type->template[0][0] );
+		$this->assertSame( 'What you will learn', $post_type->template[0][1]['content'] );
+		$this->assertSame( 2, $post_type->template[0][1]['level'] );
+	}
+
+	public function test_course_editor_template_includes_expected_editable_sections(): void {
+		$post_type = get_post_type_object( online_courses_post_type() );
+		$template  = $post_type->template;
+		$headings  = array();
+
+		foreach ( $template as $block ) {
+			if ( 'core/heading' === $block[0] ) {
+				$headings[] = $block[1]['content'];
+			}
+		}
+
+		$this->assertSame(
+			array(
+				'What you will learn',
+				'Course curriculum',
+				'Requirements',
+				'About this course',
+				'Who this course is for',
+				'Instructor',
+			),
+			$headings
+		);
+
+		$this->assertContains( 'core/list', wp_list_pluck( $template, 0 ) );
+		$this->assertContains( 'core/paragraph', wp_list_pluck( $template, 0 ) );
 	}
 
 	public function test_taxonomy_is_registered_with_portable_contract(): void {
