@@ -19,6 +19,28 @@ final class ContentDomainTest extends WP_UnitTestCase {
 		$this->assertTrue( post_type_supports( online_courses_post_type(), 'editor' ) );
 		$this->assertTrue( post_type_supports( online_courses_post_type(), 'thumbnail' ) );
 		$this->assertTrue( post_type_supports( online_courses_post_type(), 'excerpt' ) );
+		$this->assertFalse( $post_type->template_lock );
+		$this->assertIsArray( $post_type->template );
+		$this->assertNotEmpty( $post_type->template );
+		$this->assertSame( 'online-courses/learning-outcomes', $post_type->template[0][0] );
+	}
+
+	public function test_course_editor_template_includes_expected_editable_sections(): void {
+		$post_type = get_post_type_object( online_courses_post_type() );
+		$template  = $post_type->template;
+
+		$this->assertSame(
+			array(
+				'online-courses/learning-outcomes',
+				'online-courses/course-curriculum',
+				'online-courses/requirements',
+				'core/heading',
+				'core/paragraph',
+				'online-courses/audience-fit',
+				'online-courses/instructor-bio',
+			),
+			wp_list_pluck( $template, 0 )
+		);
 	}
 
 	public function test_taxonomy_is_registered_with_portable_contract(): void {
