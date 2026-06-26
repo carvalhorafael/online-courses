@@ -4,7 +4,7 @@ Tags: custom-post-type, courses, content
 Requires at least: 6.4
 Tested up to: 6.5
 Requires PHP: 8.1
-Stable tag: 0.1.1
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,10 @@ The plugin registers:
 * `course` custom post type.
 * `course_category` taxonomy.
 * Checkout URL metadata for each course.
+* Editable course blocks for learning outcomes, curriculum, requirements, audience and instructor content.
+* A default block structure for new courses in the block editor.
+
+New courses start with unlocked Online Courses blocks for learning outcomes, curriculum, requirements, audience and instructor content. The blocks render Design System-compatible markup while the active theme remains responsible for page layout and visual assets.
 
 == Installation ==
 

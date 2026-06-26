@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Online Courses
  * Description: Registers the reusable Online Courses content domain for WordPress sites.
- * Version: 0.1.1
+ * Version: 0.2.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Author: Rafael Carvalho
@@ -20,12 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ONLINE_COURSES_VERSION', '0.1.1' );
+define( 'ONLINE_COURSES_VERSION', '0.2.0' );
 define( 'ONLINE_COURSES_FILE', __FILE__ );
 define( 'ONLINE_COURSES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ONLINE_COURSES_BASENAME', plugin_basename( __FILE__ ) );
 
 require_once ONLINE_COURSES_DIR . 'includes/class-content-domain.php';
+require_once ONLINE_COURSES_DIR . 'includes/class-blocks.php';
 require_once ONLINE_COURSES_DIR . 'includes/class-github-updater.php';
 require_once ONLINE_COURSES_DIR . 'includes/class-plugin.php';
 

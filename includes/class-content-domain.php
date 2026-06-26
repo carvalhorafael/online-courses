@@ -43,6 +43,8 @@ class Online_Courses_Content_Domain {
 				'show_in_rest'       => true,
 				'show_ui'            => true,
 				'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+				'template'           => $this->course_editor_template(),
+				'template_lock'      => false,
 			)
 		);
 
@@ -177,6 +179,34 @@ class Online_Courses_Content_Domain {
 		}
 
 		update_post_meta( $post_id, self::CHECKOUT_URL_META_KEY, $checkout_url );
+	}
+
+	/**
+	 * Returns the default editable block structure for new courses.
+	 *
+	 * @return array<int, array<int, mixed>>
+	 */
+	private function course_editor_template(): array {
+		return array(
+			array( Online_Courses_Blocks::LEARNING_OUTCOMES_BLOCK ),
+			array( Online_Courses_Blocks::COURSE_CURRICULUM_BLOCK ),
+			array( Online_Courses_Blocks::REQUIREMENTS_BLOCK ),
+			array(
+				'core/heading',
+				array(
+					'content' => __( 'About this course', 'online-courses' ),
+					'level'   => 2,
+				),
+			),
+			array(
+				'core/paragraph',
+				array(
+					'content' => __( 'Explain what the course covers, how the student should use it and what makes it useful.', 'online-courses' ),
+				),
+			),
+			array( Online_Courses_Blocks::AUDIENCE_FIT_BLOCK ),
+			array( Online_Courses_Blocks::INSTRUCTOR_BIO_BLOCK ),
+		);
 	}
 
 	/**
