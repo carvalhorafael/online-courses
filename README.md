@@ -9,7 +9,8 @@ Online Courses is a WordPress plugin that owns a reusable "online courses" conte
 - REST-enabled metadata:
   - `_online_courses_checkout_url`
 - A WordPress admin meta box for the course checkout URL
-- An editable default block structure for new courses in the block editor
+- Editable course blocks for the block editor
+- A default block structure for new courses
 - Rewrite rules for `/cursos/`, `/cursos/{slug}/` and `/cursos/categoria/...`
 - GitHub Releases update integration through the plugin `Update URI`
 
@@ -24,16 +25,16 @@ For example:
 
 ## Course Editor Template
 
-New courses start with an unlocked block editor structure for the main course content:
+New courses start with an unlocked block editor structure using Online Courses blocks for the main course content:
 
-- What you will learn
-- Course curriculum
-- Requirements
+- `online-courses/learning-outcomes`
+- `online-courses/course-curriculum`
+- `online-courses/requirements`
 - About this course
-- Who this course is for
-- Instructor
+- `online-courses/audience-fit`
+- `online-courses/instructor-bio`
 
-The template uses core WordPress blocks and is fully editable. It provides an authoring starting point only; public rendering remains the responsibility of the active theme.
+The custom blocks store editable course content and render Design System-compatible markup on the front end. The active theme remains responsible for page composition, layout, spacing and loading the visual system.
 
 ## Public Contract
 

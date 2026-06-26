@@ -19,9 +19,10 @@ The plugin registers:
 * `course` custom post type.
 * `course_category` taxonomy.
 * Checkout URL metadata for each course.
-* An editable default block structure for new courses in the block editor.
+* Editable course blocks for learning outcomes, curriculum, requirements, audience and instructor content.
+* A default block structure for new courses in the block editor.
 
-New courses start with unlocked core blocks for learning outcomes, curriculum, requirements, description, audience and instructor content. The active theme remains responsible for public rendering.
+New courses start with unlocked Online Courses blocks for learning outcomes, curriculum, requirements, audience and instructor content. The blocks render Design System-compatible markup while the active theme remains responsible for page layout and visual assets.
 
 == Installation ==
 

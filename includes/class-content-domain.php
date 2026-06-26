@@ -188,61 +188,9 @@ class Online_Courses_Content_Domain {
 	 */
 	private function course_editor_template(): array {
 		return array(
-			array(
-				'core/heading',
-				array(
-					'content' => __( 'What you will learn', 'online-courses' ),
-					'level'   => 2,
-				),
-			),
-			array(
-				'core/list',
-				array(
-					'values' => $this->list_values(
-						array(
-							__( 'Describe the first practical result students will be able to apply.', 'online-courses' ),
-							__( 'Describe the second result students should achieve.', 'online-courses' ),
-							__( 'Describe the third outcome that makes the course valuable.', 'online-courses' ),
-						)
-					),
-				),
-			),
-			array(
-				'core/heading',
-				array(
-					'content' => __( 'Course curriculum', 'online-courses' ),
-					'level'   => 2,
-				),
-			),
-			array(
-				'core/list',
-				array(
-					'values' => $this->list_values(
-						array(
-							__( 'Module 1: introduce the context and the main problem.', 'online-courses' ),
-							__( 'Module 2: show the working method and practical examples.', 'online-courses' ),
-							__( 'Module 3: apply the course to a real scenario.', 'online-courses' ),
-						)
-					),
-				),
-			),
-			array(
-				'core/heading',
-				array(
-					'content' => __( 'Requirements', 'online-courses' ),
-					'level'   => 2,
-				),
-			),
-			array(
-				'core/list',
-				array(
-					'values' => $this->list_values(
-						array(
-							__( 'List the minimum knowledge, tools or context needed before starting.', 'online-courses' ),
-						)
-					),
-				),
-			),
+			array( Online_Courses_Blocks::LEARNING_OUTCOMES_BLOCK ),
+			array( Online_Courses_Blocks::COURSE_CURRICULUM_BLOCK ),
+			array( Online_Courses_Blocks::REQUIREMENTS_BLOCK ),
 			array(
 				'core/heading',
 				array(
@@ -256,53 +204,9 @@ class Online_Courses_Content_Domain {
 					'content' => __( 'Explain what the course covers, how the student should use it and what makes it useful.', 'online-courses' ),
 				),
 			),
-			array(
-				'core/heading',
-				array(
-					'content' => __( 'Who this course is for', 'online-courses' ),
-					'level'   => 2,
-				),
-			),
-			array(
-				'core/list',
-				array(
-					'values' => $this->list_values(
-						array(
-							__( 'Describe the primary audience for this course.', 'online-courses' ),
-							__( 'Describe another profile that can benefit from the course.', 'online-courses' ),
-						)
-					),
-				),
-			),
-			array(
-				'core/heading',
-				array(
-					'content' => __( 'Instructor', 'online-courses' ),
-					'level'   => 2,
-				),
-			),
-			array(
-				'core/paragraph',
-				array(
-					'content' => __( 'Add a short instructor bio connected to the course topic.', 'online-courses' ),
-				),
-			),
+			array( Online_Courses_Blocks::AUDIENCE_FIT_BLOCK ),
+			array( Online_Courses_Blocks::INSTRUCTOR_BIO_BLOCK ),
 		);
-	}
-
-	/**
-	 * Builds the HTML value expected by the core/list block.
-	 *
-	 * @param array<int, string> $items List items.
-	 */
-	private function list_values( array $items ): string {
-		$values = '';
-
-		foreach ( $items as $item ) {
-			$values .= '<li>' . esc_html( $item ) . '</li>';
-		}
-
-		return $values;
 	}
 
 	/**
